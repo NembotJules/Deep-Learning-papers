@@ -1,4 +1,4 @@
-from torch.nn import nn
+from torch import nn
 
 class AlexNet(nn.Module): 
     def __init__(self): 
