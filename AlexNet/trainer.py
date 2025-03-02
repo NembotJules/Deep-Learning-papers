@@ -20,7 +20,7 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
         model.train()
         running_loss = 0.0
         for images, labels in train_loader: 
-            images, labels, = images.to(device), labels.to(device)
+            images, labels = images.to(device), labels.to(device)
             optimizer.zero_grad()
             outputs = model(images)
             loss = loss_fn(outputs, labels)
@@ -33,21 +33,21 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
         print(f"Epoch [{epoch +1} / {num_epochs}], Loss: {epoch_loss: .4f}")
 
 
-    #Evaluate on the validations set...
-    model.eval()
-    correct = 0
-    total = 0
+        #Evaluate on the validations set...
+        model.eval()
+        correct = 0
+        total = 0
 
-    with torch.no_grad(): 
-        for images, labels in val_loader: 
-            images, labels = images.to(device), labels.to(device)
-            outputs = model(images)
-            _, predicted = torch.max(outputs, 1)
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
+        with torch.no_grad(): 
+            for images, labels in val_loader: 
+                images, labels = images.to(device), labels.to(device)
+                outputs = model(images)
+                _, predicted = torch.max(outputs, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
 
-    val_accuracy = 100 * correct / total
-    val_accuracies.append(val_accuracy)
-    print(f"Accuracy on test set: {val_accuracy:.2f}%")
+        val_accuracy = 100 * correct / total
+        val_accuracies.append(val_accuracy)
+        print(f"Accuracy on test set: {val_accuracy:.2f}%")
 
     return model, train_losses, val_accuracies
