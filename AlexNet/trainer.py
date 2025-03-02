@@ -11,7 +11,7 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
 
     
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(model.parameters(), lr=Config.lr)
+    optimizer = optim.SGD(model.parameters(), lr=Config.lr, momentum = 0.9)
 
     train_losses = []
     val_accuracies = []
