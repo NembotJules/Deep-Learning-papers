@@ -49,6 +49,6 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
 
         val_accuracy = 100 * correct / total
         val_accuracies.append(val_accuracy)
-        print(f"Accuracy on test set: {val_accuracy:.2f}%")
+        print(f"Accuracy on Validation set: {val_accuracy:.2f}%")
 
     return model, train_losses, val_accuracies
