@@ -34,7 +34,4 @@ class AlexNet(nn.Module):
         x = nn.ReLU()(x)
         x = self.dropout(x)
         x = self.fc2(x)
-        x = nn.ReLU()(x)
-        x = self.dropout(x)
-        x = nn.Softmax(dim = 1)(x)
-        return x 
+        return x
