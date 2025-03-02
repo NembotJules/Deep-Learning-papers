@@ -21,6 +21,6 @@ def get_dataloaders():
     valid_dataset = datasets.ImageFolder(root = 'tiny-imagenet-200/val', transform= transform)
 
     train_dataloader = DataLoader(train_dataset, batch_size = Config.BATCH_SIZE, num_workers=Config.NUM_WORKERS, shuffle = True)
-    valid_dataloader = DataLoader(valid_dataset, batch_size = Config.BATCH_SIZE, num_workers=Config.NUM_WORKERS, shuffle = True)
+    val_dataloader = DataLoader(valid_dataset, batch_size = Config.BATCH_SIZE, num_workers=Config.NUM_WORKERS, shuffle = True)
 
-    return train_dataloader, valid_dataloader
+    return train_dataloader, val_dataloader
