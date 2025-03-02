@@ -12,6 +12,7 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
     
     loss_fn = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=Config.lr, momentum = 0.9)
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma=0.1) ## Learning rate scheduler...
 
     train_losses = []
     val_accuracies = []
