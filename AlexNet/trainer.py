@@ -21,6 +21,8 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
         model.train()
         running_loss = 0.0
         for images, labels in train_loader: 
+            if images.size(0) != labels.size(0):
+                raise ValueError("Batch size mismatch between images and labels")
             images, labels = images.to(device), labels.to(device)
             optimizer.zero_grad()
             outputs = model(images)
