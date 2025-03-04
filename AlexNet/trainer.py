@@ -11,7 +11,8 @@ def train_model(model, train_loader, val_loader, num_epochs = Config.EPOCHS, dev
 
     
     loss_fn = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=Config.lr, momentum = 0.9, weight_decay = 0.0005)
+    #optimizer = optim.SGD(model.parameters(), lr=Config.lr, momentum = 0.9, weight_decay = 0.0005)
+    optimizer = optim.Adam(model.parameters())
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=30, gamma=0.1) ## Learning rate scheduler...
 
     train_losses = []
